@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Clicker</title>
+</head>
+<body>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
+body {
+	text-align: center;
+	background: lightgreen;
+
+
+}
+* {
+	font-family: Poppins;
+	color: black;
+
+        outline: none;
+}
+button {
+	background: skyblue;
+	text-align: center;
+	width: 150px;
+	height: 100px;
+	font-size: 27px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    animation: scale-animation 1.5s linear infinite;
+}
+
+#number1, #number2 {
+	width: 50px;
+	color: black;
+}
+@keyframes scale-animation {
+0%{transform: scale(1)}
+50%{transform: scale(.80)}
+100%{transform: scale(1)}
+}
+h1 {
+padding-bottom:100px;
+}
+#square {
+    border: 2px solid;
+    padding: 50px;
+    border-radius: 25px;
+    width: 500px;
+    margin: auto;
+    background: url("https://images.unsplash.com/photo-1507335253452-717069aa942c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZGVuc2UlMjBmb2d8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80");
+    background-size: cover;
+}
+</style>
+<h1 id="dialog">First one who reaches 100 wins!</h1>
+<br>
+<br>
+<div id="square">
+
+
+<button id="player1"><span id="number1"> 0 </span></button>
+<p id="keyl">Press L to increase the number on button</p>
+<br>
+<br>
+
+
+<button id="player2"><span id="number2"> 0 </span></button>
+<p id="keys">Press S to increase the number on button</p>
+</div>
+<br>
+<button onclick="location.reload()" width=500>Restart</button>
+<script>
+let player1 = document.getElementById('player1');
+let player2 = document.getElementById('player2');
+let dialog = document.getElementById('dialog');
+let keyl = document.getElementById('keyl');
+let keys = document.getElementById('keys');
+document.addEventListener("keydown", event => {
+	if (event.key == "l") {
+		var countup = document.getElementById('number2').innerHTML;
+		countup++;
+		document.getElementById('number2').innerHTML = countup;
+		if (countup == 100) {
+			dialog.innerHTML = "Player2 won";
+			player2.style.display = "none";
+			player1.style.display = "none";
+			keyl.style.display = "none";
+			keys.style.display = "none";
+		}
+	}
+	if (event.key == "s") {
+		var countup1 = document.getElementById('number1').innerHTML;
+		countup1++;
+		document.getElementById('number1').innerHTML = countup1;
+		if (countup1 >= 100) {
+			dialog.innerHTML = "Player1 won";
+			player2.style.display = "none";
+			player1.style.display = "none";
+			keyl.style.display = "none";
+			keys.style.display = "none";
+		}
+	}
+});
+</script>
+</body>
+</html>
